@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "destination": "https://SamanthaPatricio.github.io/rayan-site/$1",
+      "permanent": true
+    }
+  ]
+}
