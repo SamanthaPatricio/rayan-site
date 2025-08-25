@@ -28,4 +28,354 @@
       .rr-border{ box-shadow: 0 0 0 1px rgba(255,255,255,.08) inset }
       html, body { background-color: #0f172a; }
       a { text-underline-offset: 3px; }
-    </
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <!-- App em JSX inline -->
+    <script type="text/babel">
+      const { useState } = React;
+
+      function RayanRibeiroSite(){
+        const [dark, setDark] = useState(true);
+        const year = new Date().getFullYear();
+        return (
+          <div className={dark ? "dark" : ""}>
+            <div className="min-h-screen bg-slate-900 text-slate-50 relative overflow-hidden grad">
+              {/* BLOBs decorativos */}
+              <div className="absolute -top-24 -left-16 w-[28rem] h-[28rem] rounded-full bg-[var(--brand)] blob"></div>
+              <div className="absolute top-40 -right-16 w-[26rem] h-[26rem] rounded-full bg-[var(--accent)] blob"></div>
+
+              {/* NAV */}
+              <header className="sticky top-0 z-50">
+                <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                  <div className="flex items-center justify-between py-4">
+                    <LogoRR/>
+                    <nav className="hidden md:flex items-center gap-6 text-sm">
+                      <a href="#sobre" className="opacity-80 hover:opacity-100">Sobre</a>
+                      <a href="#solucoes" className="opacity-80 hover:opacity-100">Soluções</a>
+                      <a href="#metodo" className="opacity-80 hover:opacity-100">Método R²</a>
+                      <a href="#cases" className="opacity-80 hover:opacity-100">Cases</a>
+                      <a href="#contato" className="opacity-80 hover:opacity-100">Contato</a>
+                    </nav>
+                    <div className="flex items-center gap-2">
+                      <a href="#contato" className="shine rounded-xl px-4 py-2 bg-[var(--brand)]/90 hover:bg-[var(--brand)] text-white text-sm font-semibold">Agendar conversa</a>
+                      <button aria-label="Alternar tema" onClick={()=>setDark(v=>!v)} className="rounded-xl px-3 py-2 glass text-xs">{dark ? "☾" : "☀"}</button>
+                    </div>
+                  </div>
+                </div>
+              </header>
+
+              {/* HERO */}
+              <section className="relative">
+                <div className="absolute inset-0 grid-bg opacity-[.35]"></div>
+                <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-10 pb-20">
+                  <div className="grid lg:grid-cols-2 gap-10 items-center">
+                    <div>
+                      <p className="inline-flex items-center gap-2 text-xs uppercase tracking-[.2em] text-slate-300/80 rr-border rounded-full px-3 py-1">
+                        <span className="inline-block h-2 w-2 rounded-full bg-[var(--accent)]"></span> Consultor SAP & Analista de Qualidade
+                      </p>
+                      <h1 className="mt-5 text-4xl sm:text-5xl font-extrabold leading-tight rr-shadow">
+                        Rayan Ribeiro
+                        <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[var(--accent)] to-[var(--brand)]">Processos que viram performance</span>
+                      </h1>
+                      <p className="mt-5 text-slate-300 max-w-xl">
+                        Eu conecto operação e estratégia com SAP S/4HANA e práticas de Qualidade para reduzir retrabalho, elevar conformidade e acelerar decisões.
+                      </p>
+                      <div className="mt-8 flex flex-wrap gap-3">
+                        <a href="#solucoes" className="rounded-xl px-5 py-3 bg-[var(--accent)]/90 hover:bg-[var(--accent)] text-slate-900 font-semibold">Ver soluções</a>
+                        <a href="#cases" className="rounded-xl px-5 py-3 glass">Explorar cases</a>
+                      </div>
+                      {/* Stats */}
+                      <div className="mt-10 grid grid-cols-3 gap-4 max-w-md">
+                        {[
+                          {k:"Projetos", v:"+12"},
+                          {k:"Redução de retrabalho", v:"-34%"},
+                          {k:"Go-live médio", v:"90 dias"},
+                        ].map((s,i)=> (
+                          <div key={i} className="glass rounded-2xl px-4 py-5 text-center">
+                            <div className="text-2xl font-extrabold text-white">{s.v}</div>
+                            <div className="text-xs text-slate-300">{s.k}</div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="relative">
+                      <div className="aspect-[4/3] rounded-3xl glass rr-border p-6 dot-bg">
+                        <ArchitectureDiagram/>
+                      </div>
+                      <div className="absolute -bottom-6 -right-6 w-28 h-28 rounded-3xl bg-[var(--brand)]/40 flex items-center justify-center rotate-6 rr-border">
+                        <span className="text-3xl font-black">R²</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              {/* ABOUT */}
+              <section id="sobre" className="py-20">
+                <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                  <div className="grid lg:grid-cols-3 gap-8">
+                    <div className="lg:col-span-2">
+                      <h2 className="text-2xl sm:text-3xl font-extrabold">Sobre</h2>
+                      <p className="mt-4 text-slate-300 leading-relaxed">
+                        Atuo na interseção entre <span className="font-semibold text-white">SAP</span> e <span className="font-semibold text-white">Gestão da Qualidade</span>, transformando mapas de processo em ganhos reais de produtividade. Meu foco é <em>blueprint enxuto</em>, integrações limpas e governança que permanece após o go-live.
+                      </p>
+                      <ul className="mt-6 flex flex-wrap gap-3">
+                        {["S/4HANA","Fiori","BTP","PI/PO","API REST","MM","SD","FI/CO","PP","QM","ABAP (básico)","Power BI"].map((t,i)=> (
+                          <li key={i} className="tag text-xs rounded-full px-3 py-1 text-slate-200/90">{t}</li>
+                        ))}
+                      </ul>
+                    </div>
+                    <aside className="space-y-3">
+                      <Badge title="Disponível para projetos"/>
+                      <Badge title="Atuação: Brasil (remoto/presencial)"/>
+                      <Badge title="Idiomas: PT • EN"/>
+                    </aside>
+                  </div>
+                </div>
+              </section>
+
+              {/* SOLUÇÕES */}
+              <section id="solucoes" className="py-20">
+                <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                  <h2 className="text-2xl sm:text-3xl font-extrabold">Soluções</h2>
+                  <div className="mt-8 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {solutions.map((s, i)=> <Card key={i} {...s} />)}
+                  </div>
+                </div>
+              </section>
+
+              {/* MÉTODO */}
+              <section id="metodo" className="py-20">
+                <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                  <div className="grid lg:grid-cols-2 gap-10 items-start">
+                    <div>
+                      <h2 className="text-2xl sm:text-3xl font-extrabold">Método R²</h2>
+                      <p className="mt-4 text-slate-300 max-w-prose">Três movimentos para sair do <em>as-is</em> para a performance: <strong>Rastrear</strong> gargalos, <strong>Refinar</strong> processos e <strong>Realizar</strong> entregas com governança.</p>
+                      <ol className="mt-6 space-y-4">
+                        {[
+                          {t:"Rastrear", d:"Mapeamento fino de processos, métricas e dor operacional."},
+                          {t:"Refinar", d:"Blueprint enxuto, integrações e desenho Fiori centrado no usuário."},
+                          {t:"Realizar", d:"Implantação ágil, documentação viva e handover claro para sustentação."},
+                        ].map((step, i)=> (
+                          <li key={i} className="flex gap-4">
+                            <span className="h-9 w-9 rounded-xl bg-[var(--accent)] text-slate-900 font-extrabold flex items-center justify-center">{i+1}</span>
+                            <div>
+                              <div className="font-bold">{step.t}</div>
+                              <div className="text-slate-300 text-sm">{step.d}</div>
+                            </div>
+                          </li>
+                        ))}
+                      </ol>
+                    </div>
+                    <div className="glass rr-border rounded-3xl p-6">
+                      <h3 className="font-bold">Entregáveis</h3>
+                      <ul className="mt-4 grid sm:grid-cols-2 gap-3 text-sm">
+                        {[
+                          "Matriz SIPOC & indicadores",
+                          "Blueprint AS-IS/TO-BE",
+                          "Catálogo de integrações",
+                          "Backlog Fiori priorizado",
+                          "Plano de testes & QA",
+                          "Kit de treinamento & handover",
+                        ].map((e,i)=> <li key={i} className="glass rounded-xl px-3 py-2">{e}</li>)}
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              {/* CASES */}
+              <section id="cases" className="py-20">
+                <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                  <h2 className="text-2xl sm:text-3xl font-extrabold">Cases</h2>
+                  <div className="mt-8 grid lg:grid-cols-3 md:grid-cols-2 gap-6">
+                    {cases.map((c,i)=> <CaseCard key={i} {...c} />)}
+                  </div>
+                </div>
+              </section>
+
+              {/* DEPOIMENTOS */}
+              <section className="py-20">
+                <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                  <h2 className="text-2xl sm:text-3xl font-extrabold">Depoimentos</h2>
+                  <div className="mt-8 grid md:grid-cols-3 gap-6">
+                    {testimonials.map((t,i)=> <Testimonial key={i} {...t} />)}
+                  </div>
+                </div>
+              </section>
+
+              {/* CONTATO */}
+              <section id="contato" className="py-20">
+                <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                  <div className="grid lg:grid-cols-2 gap-10 items-start">
+                    <div>
+                      <h2 className="text-2xl sm:text-3xl font-extrabold">Vamos conversar</h2>
+                      <p className="mt-3 text-slate-300">Me conte sobre seu contexto SAP e metas de Qualidade. Responderei em 1 dia útil.</p>
+                      <ul className="mt-6 space-y-3 text-sm">
+                        <li className="flex items-center gap-3"><span className="h-2 w-2 rounded-full bg-[var(--accent)]"></span> Email: <a className="underline" href="mailto:Rayan.ribeiro@gmail.com">Rayan.ribeiro@gmail.com</a></li>
+                        <li className="flex items-center gap-3"><span className="h-2 w-2 rounded-full bg-[var(--accent)]"></span> LinkedIn: <a className="underline" target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/rayanribeiro/">linkedin.com/in/rayanribeiro</a></li>
+                        <li className="flex items-center gap-3"><span className="h-2 w-2 rounded-full bg-[var(--accent)]"></span> WhatsApp: <a className="underline" href="#">+55 (00) 00000-0000</a></li>
+                      </ul>
+                      <div className="mt-6 flex gap-3">
+                        <a href="#" className="rounded-xl px-5 py-3 glass">Baixar CV (PDF)</a>
+                        <a href="#solucoes" className="rounded-xl px-5 py-3 bg-[var(--brand)]/90 hover:bg-[var(--brand)]">Ver portfólio</a>
+                      </div>
+                    </div>
+                    <form onSubmit={(e)=>{e.preventDefault(); alert('Obrigado! Sua mensagem foi recebida (demo).')}} className="glass rr-border rounded-3xl p-6">
+                      <div className="grid gap-4">
+                        <Input label="Nome" placeholder="Seu nome"/>
+                        <Input label="Empresa" placeholder="Ex.: BRF"/>
+                        <Input label="Email" type="email" placeholder="voce@empresa.com"/>
+                        <Input label="Mensagem" as="textarea" placeholder="Contexto, prazos e objetivos"/>
+                        <button className="mt-2 rounded-xl px-5 py-3 bg-[var(--accent)]/90 hover:bg-[var(--accent)] text-slate-900 font-semibold">Enviar</button>
+                        <p className="text-xs text-slate-400">Este formulário é demonstrativo. Integraremos com seu provedor de email/CRM no deploy.</p>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </section>
+
+              {/* FOOTER */}
+              <footer className="py-10 border-t border-white/10">
+                <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+                  <div className="flex items-center gap-3 opacity-90">
+                    <LogoRR small/>
+                    <span className="text-sm text-slate-300">© {year} Rayan Ribeiro • Consultor SAP & Qualidade</span>
+                  </div>
+                  <div className="text-xs text-slate-400">Design & dev — Samantha + Orion</div>
+                </div>
+              </footer>
+            </div>
+          </div>
+        );
+      }
+
+      function LogoRR({small}){
+        return (
+          <a href="#topo" className="flex items-center gap-3 group">
+            <div className={"relative " + (small ? "h-8 w-8" : "h-11 w-11") + " rounded-2xl rr-border grid place-items-center overflow-hidden"}>
+              <img src="./rr-logo.svg" alt="RR" className="h-[85%] w-[85%]"/>
+            </div>
+            <div>
+              <div className={"font-black leading-none " + (small ? "text-base" : "text-xl")}>Rayan Ribeiro</div>
+              <div className="text-[10px] tracking-wider uppercase text-slate-300">Consultor SAP • Qualidade</div>
+            </div>
+          </a>
+        );
+      }
+
+      function ArchitectureDiagram(){
+        return (
+          <svg viewBox="0 0 680 440" className="w-full h-full">
+            {[{x:20,y:30,w:180,h:80,t:"Operações"},
+              {x:240,y:30,w:200,h:80,t:"S/4HANA"},
+              {x:480,y:30,w:180,h:80,t:"Fiori"},
+              {x:20,y:160,w:200,h:80,t:"MM • SD"},
+              {x:260,y:160,w:160,h:80,t:"FI/CO"},
+              {x:460,y:160,w:200,h:80,t:"PP • QM"},
+              {x:20,y:290,w:240,h:80,t:"BTP • PI/PO • APIs"},
+              {x:300,y:290,w:180,h:80,t:"QA & Testes"},
+              {x:520,y:290,w:140,h:80,t:"Power BI"}].map((b,i)=>(
+              <g key={i}>
+                <rect x={b.x} y={b.y} width={b.w} height={b.h} rx="14" fill="rgba(255,255,255,.03)" stroke="rgba(255,255,255,.12)"/>
+                <text x={b.x + b.w/2} y={b.y + b.h/2 + 4} textAnchor="middle" fontSize="18" fill="#dbeafe">{b.t}</text>
+              </g>
+            ))}
+            {[[110,110,110,160],[340,110,340,160],[570,110,570,160],
+              [220,200,260,200],[420,200,460,200],
+              [140,240,140,290],[340,240,340,290],[560,240,560,290]
+            ].map((a,i)=> <Arrow key={i} x1={a[0]} y1={a[1]} x2={a[2]} y2={a[3]} />)}
+          </svg>
+        );
+      }
+
+      function Arrow({x1,y1,x2,y2}){
+        return (
+          <g>
+            <line x1={x1} y1={y1} x2={x2} y2={y2} stroke="#22d3ee" strokeWidth="2"/>
+            <polygon points={`${x2},${y2} ${x2-6},${y2-10} ${x2+6},${y2-10}`} fill="#22d3ee"/>
+          </g>
+        );
+      }
+
+      function Badge({title}){
+        return <div className="glass rounded-xl px-3 py-2 inline-flex items-center gap-2 text-sm"><span className="h-2 w-2 rounded-full bg-[var(--accent)]"></span>{title}</div>;
+      }
+
+      function Input(props){
+        const { label, as, ...rest } = props;
+        const Comp = as === "textarea" ? "textarea" : "input";
+        return (
+          <label className="text-sm block">
+            <span className="text-slate-300">{label}</span>
+            {React.createElement(Comp, { className:"mt-1 w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl outline-none focus:ring-2 focus:ring-[var(--accent)]", ...rest })}
+          </label>
+        );
+      }
+
+      function Card({title,desc,bullets}){
+        return (
+          <article className="glass rr-border rounded-3xl p-6 hover:-translate-y-0.5 transition">
+            <div className="flex items-center justify-between">
+              <h3 className="font-bold text-lg">{title}</h3>
+              <span className="text-xs rounded-full px-2 py-1 bg-[var(--brand)]/20 border border-white/10">SAP</span>
+            </div>
+            <p className="mt-3 text-slate-300 text-sm">{desc}</p>
+            <ul className="mt-4 space-y-2 text-sm">
+              {bullets.map((b,i)=> <li key={i} className="flex gap-2"><span className="h-1.5 w-1.5 mt-2 rounded-full bg-[var(--accent)]"></span>{b}</li>)}
+            </ul>
+          </article>
+        );
+      }
+
+      function CaseCard({title, challenge, approach, result}){
+        return (
+          <article className="glass rr-border rounded-3xl p-6">
+            <h3 className="font-bold text-lg">{title}</h3>
+            <dl className="mt-3 space-y-2 text-sm text-slate-300">
+              <div><dt className="text-slate-400">Desafio</dt><dd>{challenge}</dd></div>
+              <div><dt className="text-slate-400">Abordagem</dt><dd>{approach}</dd></div>
+              <div><dt className="text-slate-400">Resultado</dt><dd className="text-white font-semibold">{result}</dd></div>
+            </dl>
+          </article>
+        );
+      }
+
+      function Testimonial({name, role, text}){
+        return (
+          <blockquote className="glass rr-border rounded-3xl p-6">
+            <p className="text-slate-200">“{text}”</p>
+            <footer className="mt-4 text-sm text-slate-400">— {name}, <span className="text-slate-300">{role}</span></footer>
+          </blockquote>
+        );
+      }
+
+      const solutions = [
+        { title:"Descoberta & Blueprint", desc:"Mapeamento AS-IS/TO-BE com foco em valor e UX Fiori.", bullets:["Workshops de processo (SIPOC)","Backlog priorizado por impacto","Roadmap de integrações"] },
+        { title:"Implantação S/4HANA", desc:"Entrega ágil, testes sólidos e governança clara.", bullets:["Configuração modular","Plano de testes & QA","Handover e treinamento"] },
+        { title:"Integrações SAP", desc:"PI/PO, BTP e APIs REST para dados sem atrito.", bullets:["Catálogo de integrações","Padrões de autenticação","Monitoramento e logs"] },
+        { title:"Qualidade (QM)", desc:"Auditorias, amostragem e KPIs que reduzem falhas.", bullets:["Planos de inspeção","Automação de não conformidades","Dashboards de qualidade"] },
+        { title:"Automação & Analytics", desc:"BTP, bots e Power BI para decisões em tempo real.", bullets:["Jobs e eventos","Conectores oficiais","Modelos analíticos"] },
+        { title:"Sustentação (AMS)", desc:"Operação estável, SLAs claros e melhoria contínua.", bullets:["Runbook de incidentes","KPIs de suporte","Ciclos de otimização"] },
+      ];
+
+      const cases = [
+        { title:"Indústria — Redução de retrabalho", challenge:"Inconsistências entre PP e QM geravam reprocesso.", approach:"Ajuste de planos de inspeção e eventos de qualidade integrados ao chão de fábrica.", result:"-34% retrabalho em 3 meses; lead time -12%." },
+        { title:"Varejo — Go-live S/4HANA", challenge:"Prazos agressivos e equipe enxuta.", approach:"Backlog enxuto, Fiori crítico e automações BTP.", result:"Go-live em 90 dias com 0 incidentes críticos." },
+        { title:"Alimentos — Conformidade & rastreabilidade", challenge:"Auditorias com apontamentos recorrentes.", approach:"SIPOC + PI/PO + painéis Power BI por lote.", result:"Conformidade 98% e rastreio por lote em D+1." },
+      ];
+
+      const testimonials = [
+        { name:"Carolina M.", role:"Head de Operações", text:"Visão de ponta-a-ponta e execução pragmática. Entregas consistentes." },
+        { name:"Luiz A.", role:"Gerente de TI", text:"Traduziu o negócio para SAP e evitou customizações desnecessárias." },
+        { name:"Renata P.", role:"Qualidade", text:"Os indicadores de não conformidade caíram já no primeiro ciclo." },
+      ];
+
+      const root = ReactDOM.createRoot(document.getElementById('root'));
+      root.render(<RayanRibeiroSite/>);
+    </script>
+  </body>
+</html>
