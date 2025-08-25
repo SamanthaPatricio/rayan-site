@@ -1,12 +1,31 @@
 <!doctype html>
-<html lang="pt-br">
+<html lang="pt-BR">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portfólio — Samantha Patrício</title>
-  </head>
-  <body class="bg-white text-gray-900">
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
-</html>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Rayan Ribeiro — Consultor SAP & Qualidade</title>
+    <meta name="description" content="Consultor SAP & Analista de Qualidade. Processos que viram performance.">
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+    <!-- Tailwind (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- React 18 + ReactDOM (CDN) -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <!-- Babel para transformar JSX no navegador -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+      :root{ --brand:#4361ee; --accent:#22d3ee; --ink:#0b1220; --sand:#f8fafc; --muted:#94a3b8 }
+      .grid-bg{ background-image:linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px); background-size:40px 40px; }
+      .dot-bg{ background-image: radial-gradient(rgba(255,255,255,.06) 2px, transparent 2px); background-size: 24px 24px; }
+      .glass{ backdrop-filter: blur(8px); background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02)); border:1px solid rgba(255,255,255,.12)}
+      .shine{ background: linear-gradient(90deg, transparent, rgba(255,255,255,.12), transparent); background-size:250% 100%; background-position:-150% 0; }
+      .shine:hover{ animation: shine 900ms ease forwards }
+      @keyframes shine{ to{ background-position:150% 0 } }
+      .grad{ background-image: radial-gradient(1200px 600px at 10% -10%, rgba(67,97,238,.25), transparent), radial-gradient(1200px 600px at 110% 10%, rgba(34,211,238,.18), transparent) }
+      .tag{ border: 1px dashed rgba(255,255,255,.18) }
+      .blob{ filter: blur(50px); opacity:.6 }
+      .rr-shadow{ text-shadow: 0 10px 40px rgba(34,211,238,.35) }
+      .rr-border{ box-shadow: 0 0 0 1px rgba(255,255,255,.08) inset }
+      html, body { background-color: #0f172a; }
+      a { text-underline-offset: 3px; }
+    </
