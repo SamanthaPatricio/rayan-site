@@ -8,11 +8,6 @@
     <link rel="icon" type="image/svg+xml" href="./favicon.svg">
     <!-- Tailwind (CDN) -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- React 18 + ReactDOM (CDN) -->
-    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    <!-- Babel para transformar JSX no navegador -->
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <style>
       :root{ --brand:#4361ee; --accent:#22d3ee; --ink:#0b1220; --sand:#f8fafc; --muted:#94a3b8 }
       .grid-bg{ background-image:linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px); background-size:40px 40px; }
@@ -30,351 +25,280 @@
       a { text-underline-offset: 3px; }
     </style>
   </head>
-  <body>
-    <div id="root"></div>
+  <body class="text-slate-50">
+    <div class="min-h-screen bg-slate-900 relative overflow-hidden grad">
+      <!-- BLOBs decorativos -->
+      <div class="absolute -top-24 -left-16 w-[28rem] h-[28rem] rounded-full bg-[var(--brand)] blob"></div>
+      <div class="absolute top-40 -right-16 w-[26rem] h-[26rem] rounded-full bg-[var(--accent)] blob"></div>
 
- <script type="text/babel" data-presets="react">
-      const { useState } = React;
-
-      function RayanRibeiroSite(){
-        const [dark, setDark] = useState(true);
-        const year = new Date().getFullYear();
-        return (
-          <div className={dark ? "dark" : ""}>
-            <div className="min-h-screen bg-slate-900 text-slate-50 relative overflow-hidden grad">
-              {/* BLOBs decorativos */}
-              <div className="absolute -top-24 -left-16 w-[28rem] h-[28rem] rounded-full bg-[var(--brand)] blob"></div>
-              <div className="absolute top-40 -right-16 w-[26rem] h-[26rem] rounded-full bg-[var(--accent)] blob"></div>
-
-              {/* NAV */}
-              <header className="sticky top-0 z-50">
-                <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                  <div className="flex items-center justify-between py-4">
-                    <LogoRR/>
-                    <nav className="hidden md:flex items-center gap-6 text-sm">
-                      <a href="#sobre" className="opacity-80 hover:opacity-100">Sobre</a>
-                      <a href="#solucoes" className="opacity-80 hover:opacity-100">Soluções</a>
-                      <a href="#metodo" className="opacity-80 hover:opacity-100">Método R²</a>
-                      <a href="#cases" className="opacity-80 hover:opacity-100">Cases</a>
-                      <a href="#contato" className="opacity-80 hover:opacity-100">Contato</a>
-                    </nav>
-                    <div className="flex items-center gap-2">
-                      <a href="#contato" className="shine rounded-xl px-4 py-2 bg-[var(--brand)]/90 hover:bg-[var(--brand)] text-white text-sm font-semibold">Agendar conversa</a>
-                      <button aria-label="Alternar tema" onClick={()=>setDark(v=>!v)} className="rounded-xl px-3 py-2 glass text-xs">{dark ? "☾" : "☀"}</button>
-                    </div>
-                  </div>
-                </div>
-              </header>
-
-              {/* HERO */}
-              <section className="relative">
-                <div className="absolute inset-0 grid-bg opacity-[.35]"></div>
-                <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-10 pb-20">
-                  <div className="grid lg:grid-cols-2 gap-10 items-center">
-                    <div>
-                      <p className="inline-flex items-center gap-2 text-xs uppercase tracking-[.2em] text-slate-300/80 rr-border rounded-full px-3 py-1">
-                        <span className="inline-block h-2 w-2 rounded-full bg-[var(--accent)]"></span> Consultor SAP & Analista de Qualidade
-                      </p>
-                      <h1 className="mt-5 text-4xl sm:text-5xl font-extrabold leading-tight rr-shadow">
-                        Rayan Ribeiro
-                        <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[var(--accent)] to-[var(--brand)]">Processos que viram performance</span>
-                      </h1>
-                      <p className="mt-5 text-slate-300 max-w-xl">
-                        Eu conecto operação e estratégia com SAP S/4HANA e práticas de Qualidade para reduzir retrabalho, elevar conformidade e acelerar decisões.
-                      </p>
-                      <div className="mt-8 flex flex-wrap gap-3">
-                        <a href="#solucoes" className="rounded-xl px-5 py-3 bg-[var(--accent)]/90 hover:bg-[var(--accent)] text-slate-900 font-semibold">Ver soluções</a>
-                        <a href="#cases" className="rounded-xl px-5 py-3 glass">Explorar cases</a>
-                      </div>
-                      {/* Stats */}
-                      <div className="mt-10 grid grid-cols-3 gap-4 max-w-md">
-                        {[
-                          {k:"Projetos", v:"+12"},
-                          {k:"Redução de retrabalho", v:"-34%"},
-                          {k:"Go-live médio", v:"90 dias"},
-                        ].map((s,i)=> (
-                          <div key={i} className="glass rounded-2xl px-4 py-5 text-center">
-                            <div className="text-2xl font-extrabold text-white">{s.v}</div>
-                            <div className="text-xs text-slate-300">{s.k}</div>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                    <div className="relative">
-                      <div className="aspect-[4/3] rounded-3xl glass rr-border p-6 dot-bg">
-                        <ArchitectureDiagram/>
-                      </div>
-                      <div className="absolute -bottom-6 -right-6 w-28 h-28 rounded-3xl bg-[var(--brand)]/40 flex items-center justify-center rotate-6 rr-border">
-                        <span className="text-3xl font-black">R²</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </section>
-
-              {/* ABOUT */}
-              <section id="sobre" className="py-20">
-                <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                  <div className="grid lg:grid-cols-3 gap-8">
-                    <div className="lg:col-span-2">
-                      <h2 className="text-2xl sm:text-3xl font-extrabold">Sobre</h2>
-                      <p className="mt-4 text-slate-300 leading-relaxed">
-                        Atuo na interseção entre <span className="font-semibold text-white">SAP</span> e <span className="font-semibold text-white">Gestão da Qualidade</span>, transformando mapas de processo em ganhos reais de produtividade. Meu foco é <em>blueprint enxuto</em>, integrações limpas e governança que permanece após o go-live.
-                      </p>
-                      <ul className="mt-6 flex flex-wrap gap-3">
-                        {["S/4HANA","Fiori","BTP","PI/PO","API REST","MM","SD","FI/CO","PP","QM","ABAP (básico)","Power BI"].map((t,i)=> (
-                          <li key={i} className="tag text-xs rounded-full px-3 py-1 text-slate-200/90">{t}</li>
-                        ))}
-                      </ul>
-                    </div>
-                    <aside className="space-y-3">
-                      <Badge title="Disponível para projetos"/>
-                      <Badge title="Atuação: Brasil (remoto/presencial)"/>
-                      <Badge title="Idiomas: PT • EN"/>
-                    </aside>
-                  </div>
-                </div>
-              </section>
-
-              {/* SOLUÇÕES */}
-              <section id="solucoes" className="py-20">
-                <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                  <h2 className="text-2xl sm:text-3xl font-extrabold">Soluções</h2>
-                  <div className="mt-8 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {solutions.map((s, i)=> <Card key={i} {...s} />)}
-                  </div>
-                </div>
-              </section>
-
-              {/* MÉTODO */}
-              <section id="metodo" className="py-20">
-                <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                  <div className="grid lg:grid-cols-2 gap-10 items-start">
-                    <div>
-                      <h2 className="text-2xl sm:text-3xl font-extrabold">Método R²</h2>
-                      <p className="mt-4 text-slate-300 max-w-prose">Três movimentos para sair do <em>as-is</em> para a performance: <strong>Rastrear</strong> gargalos, <strong>Refinar</strong> processos e <strong>Realizar</strong> entregas com governança.</p>
-                      <ol className="mt-6 space-y-4">
-                        {[
-                          {t:"Rastrear", d:"Mapeamento fino de processos, métricas e dor operacional."},
-                          {t:"Refinar", d:"Blueprint enxuto, integrações e desenho Fiori centrado no usuário."},
-                          {t:"Realizar", d:"Implantação ágil, documentação viva e handover claro para sustentação."},
-                        ].map((step, i)=> (
-                          <li key={i} className="flex gap-4">
-                            <span className="h-9 w-9 rounded-xl bg-[var(--accent)] text-slate-900 font-extrabold flex items-center justify-center">{i+1}</span>
-                            <div>
-                              <div className="font-bold">{step.t}</div>
-                              <div className="text-slate-300 text-sm">{step.d}</div>
-                            </div>
-                          </li>
-                        ))}
-                      </ol>
-                    </div>
-                    <div className="glass rr-border rounded-3xl p-6">
-                      <h3 className="font-bold">Entregáveis</h3>
-                      <ul className="mt-4 grid sm:grid-cols-2 gap-3 text-sm">
-                        {[
-                          "Matriz SIPOC & indicadores",
-                          "Blueprint AS-IS/TO-BE",
-                          "Catálogo de integrações",
-                          "Backlog Fiori priorizado",
-                          "Plano de testes & QA",
-                          "Kit de treinamento & handover",
-                        ].map((e,i)=> <li key={i} className="glass rounded-xl px-3 py-2">{e}</li>)}
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </section>
-
-              {/* CASES */}
-              <section id="cases" className="py-20">
-                <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                  <h2 className="text-2xl sm:text-3xl font-extrabold">Cases</h2>
-                  <div className="mt-8 grid lg:grid-cols-3 md:grid-cols-2 gap-6">
-                    {cases.map((c,i)=> <CaseCard key={i} {...c} />)}
-                  </div>
-                </div>
-              </section>
-
-              {/* DEPOIMENTOS */}
-              <section className="py-20">
-                <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                  <h2 className="text-2xl sm:text-3xl font-extrabold">Depoimentos</h2>
-                  <div className="mt-8 grid md:grid-cols-3 gap-6">
-                    {testimonials.map((t,i)=> <Testimonial key={i} {...t} />)}
-                  </div>
-                </div>
-              </section>
-
-              {/* CONTATO */}
-              <section id="contato" className="py-20">
-                <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                  <div className="grid lg:grid-cols-2 gap-10 items-start">
-                    <div>
-                      <h2 className="text-2xl sm:text-3xl font-extrabold">Vamos conversar</h2>
-                      <p className="mt-3 text-slate-300">Me conte sobre seu contexto SAP e metas de Qualidade. Responderei em 1 dia útil.</p>
-                      <ul className="mt-6 space-y-3 text-sm">
-                        <li className="flex items-center gap-3"><span className="h-2 w-2 rounded-full bg-[var(--accent)]"></span> Email: <a className="underline" href="mailto:Rayan.ribeiro@gmail.com">Rayan.ribeiro@gmail.com</a></li>
-                        <li className="flex items-center gap-3"><span className="h-2 w-2 rounded-full bg-[var(--accent)]"></span> LinkedIn: <a className="underline" target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/rayanribeiro/">linkedin.com/in/rayanribeiro</a></li>
-                        <li className="flex items-center gap-3"><span className="h-2 w-2 rounded-full bg-[var(--accent)]"></span> WhatsApp: <a className="underline" href="#">+55 (00) 00000-0000</a></li>
-                      </ul>
-                      <div className="mt-6 flex gap-3">
-                        <a href="#" className="rounded-xl px-5 py-3 glass">Baixar CV (PDF)</a>
-                        <a href="#solucoes" className="rounded-xl px-5 py-3 bg-[var(--brand)]/90 hover:bg-[var(--brand)]">Ver portfólio</a>
-                      </div>
-                    </div>
-                    <form onSubmit={(e)=>{e.preventDefault(); alert('Obrigado! Sua mensagem foi recebida (demo).')}} className="glass rr-border rounded-3xl p-6">
-                      <div className="grid gap-4">
-                        <Input label="Nome" placeholder="Seu nome"/>
-                        <Input label="Empresa" placeholder="Ex.: BRF"/>
-                        <Input label="Email" type="email" placeholder="voce@empresa.com"/>
-                        <Input label="Mensagem" as="textarea" placeholder="Contexto, prazos e objetivos"/>
-                        <button className="mt-2 rounded-xl px-5 py-3 bg-[var(--accent)]/90 hover:bg-[var(--accent)] text-slate-900 font-semibold">Enviar</button>
-                        <p className="text-xs text-slate-400">Este formulário é demonstrativo. Integraremos com seu provedor de email/CRM no deploy.</p>
-                      </div>
-                    </form>
-                  </div>
-                </div>
-              </section>
-
-              {/* FOOTER */}
-              <footer className="py-10 border-t border-white/10">
-                <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-                  <div className="flex items-center gap-3 opacity-90">
-                    <LogoRR small/>
-                    <span className="text-sm text-slate-300">© {year} Rayan Ribeiro • Consultor SAP & Qualidade</span>
-                  </div>
-                  <div className="text-xs text-slate-400">Design & dev — Samantha + Orion</div>
-                </div>
-              </footer>
+      <!-- NAV -->
+      <header class="sticky top-0 z-50">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="flex items-center justify-between py-4">
+            <a href="#topo" class="flex items-center gap-3 group">
+              <div class="relative h-11 w-11 rounded-2xl rr-border grid place-items-center overflow-hidden">
+                <img src="./rr-logo.svg" alt="RR" class="h-[85%] w-[85%]">
+              </div>
+              <div>
+                <div class="font-black leading-none text-xl">Rayan Ribeiro</div>
+                <div class="text-[10px] tracking-wider uppercase text-slate-300">Consultor SAP • Qualidade</div>
+              </div>
+            </a>
+            <nav class="hidden md:flex items-center gap-6 text-sm">
+              <a href="#sobre" class="opacity-80 hover:opacity-100">Sobre</a>
+              <a href="#solucoes" class="opacity-80 hover:opacity-100">Soluções</a>
+              <a href="#metodo" class="opacity-80 hover:opacity-100">Método R²</a>
+              <a href="#cases" class="opacity-80 hover:opacity-100">Cases</a>
+              <a href="#contato" class="opacity-80 hover:opacity-100">Contato</a>
+            </nav>
+            <div class="flex items-center gap-2">
+              <a href="#contato" class="shine rounded-xl px-4 py-2 bg-[var(--brand)]/90 hover:bg-[var(--brand)] text-white text-sm font-semibold">Agendar conversa</a>
             </div>
           </div>
-        );
-      }
+        </div>
+      </header>
 
-      function LogoRR({small}){
-        return (
-          <a href="#topo" className="flex items-center gap-3 group">
-            <div className={"relative " + (small ? "h-8 w-8" : "h-11 w-11") + " rounded-2xl rr-border grid place-items-center overflow-hidden"}>
-              <img src="./rr-logo.svg" alt="RR" className="h-[85%] w-[85%]"/>
-            </div>
+      <!-- HERO -->
+      <section class="relative">
+        <div class="absolute inset-0 grid-bg opacity-[.35]"></div>
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-10 pb-20">
+          <div class="grid lg:grid-cols-2 gap-10 items-center">
             <div>
-              <div className={"font-black leading-none " + (small ? "text-base" : "text-xl")}>Rayan Ribeiro</div>
-              <div className="text-[10px] tracking-wider uppercase text-slate-300">Consultor SAP • Qualidade</div>
+              <p class="inline-flex items-center gap-2 text-xs uppercase tracking-[.2em] text-slate-300/80 rr-border rounded-full px-3 py-1">
+                <span class="inline-block h-2 w-2 rounded-full bg-[var(--accent)]"></span> Consultor SAP & Analista de Qualidade
+              </p>
+              <h1 class="mt-5 text-4xl sm:text-5xl font-extrabold leading-tight rr-shadow">
+                Rayan Ribeiro
+                <span class="block text-transparent bg-clip-text bg-gradient-to-r from-[var(--accent)] to-[var(--brand)]">Processos que viram performance</span>
+              </h1>
+              <p class="mt-5 text-slate-300 max-w-xl">
+                Eu conecto operação e estratégia com SAP S/4HANA e práticas de Qualidade para reduzir retrabalho, elevar conformidade e acelerar decisões.
+              </p>
+              <div class="mt-8 flex flex-wrap gap-3">
+                <a href="#solucoes" class="rounded-xl px-5 py-3 bg-[var(--accent)]/90 hover:bg-[var(--accent)] text-slate-900 font-semibold">Ver soluções</a>
+                <a href="#cases" class="rounded-xl px-5 py-3 glass">Explorar cases</a>
+              </div>
+              <!-- Stats -->
+              <div class="mt-10 grid grid-cols-3 gap-4 max-w-md">
+                <div class="glass rounded-2xl px-4 py-5 text-center"><div class="text-2xl font-extrabold text-white">+12</div><div class="text-xs text-slate-300">Projetos</div></div>
+                <div class="glass rounded-2xl px-4 py-5 text-center"><div class="text-2xl font-extrabold text-white">-34%</div><div class="text-xs text-slate-300">Redução de retrabalho</div></div>
+                <div class="glass rounded-2xl px-4 py-5 text-center"><div class="text-2xl font-extrabold text-white">90 dias</div><div class="text-xs text-slate-300">Go-live médio</div></div>
+              </div>
             </div>
-          </a>
-        );
-      }
-
-      function ArchitectureDiagram(){
-        return (
-          <svg viewBox="0 0 680 440" className="w-full h-full">
-            {[{x:20,y:30,w:180,h:80,t:"Operações"},
-              {x:240,y:30,w:200,h:80,t:"S/4HANA"},
-              {x:480,y:30,w:180,h:80,t:"Fiori"},
-              {x:20,y:160,w:200,h:80,t:"MM • SD"},
-              {x:260,y:160,w:160,h:80,t:"FI/CO"},
-              {x:460,y:160,w:200,h:80,t:"PP • QM"},
-              {x:20,y:290,w:240,h:80,t:"BTP • PI/PO • APIs"},
-              {x:300,y:290,w:180,h:80,t:"QA & Testes"},
-              {x:520,y:290,w:140,h:80,t:"Power BI"}].map((b,i)=>(
-              <g key={i}>
-                <rect x={b.x} y={b.y} width={b.w} height={b.h} rx="14" fill="rgba(255,255,255,.03)" stroke="rgba(255,255,255,.12)"/>
-                <text x={b.x + b.w/2} y={b.y + b.h/2 + 4} textAnchor="middle" fontSize="18" fill="#dbeafe">{b.t}</text>
-              </g>
-            ))}
-            {[[110,110,110,160],[340,110,340,160],[570,110,570,160],
-              [220,200,260,200],[420,200,460,200],
-              [140,240,140,290],[340,240,340,290],[560,240,560,290]
-            ].map((a,i)=> <Arrow key={i} x1={a[0]} y1={a[1]} x2={a[2]} y2={a[3]} />)}
-          </svg>
-        );
-      }
-
-      function Arrow({x1,y1,x2,y2}){
-        return (
-          <g>
-            <line x1={x1} y1={y1} x2={x2} y2={y2} stroke="#22d3ee" strokeWidth="2"/>
-            <polygon points={`${x2},${y2} ${x2-6},${y2-10} ${x2+6},${y2-10}`} fill="#22d3ee"/>
-          </g>
-        );
-      }
-
-      function Badge({title}){
-        return <div className="glass rounded-xl px-3 py-2 inline-flex items-center gap-2 text-sm"><span className="h-2 w-2 rounded-full bg-[var(--accent)]"></span>{title}</div>;
-      }
-
-      function Input(props){
-        const { label, as, ...rest } = props;
-        const Comp = as === "textarea" ? "textarea" : "input";
-        return (
-          <label className="text-sm block">
-            <span className="text-slate-300">{label}</span>
-            {React.createElement(Comp, { className:"mt-1 w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl outline-none focus:ring-2 focus:ring-[var(--accent)]", ...rest })}
-          </label>
-        );
-      }
-
-      function Card({title,desc,bullets}){
-        return (
-          <article className="glass rr-border rounded-3xl p-6 hover:-translate-y-0.5 transition">
-            <div className="flex items-center justify-between">
-              <h3 className="font-bold text-lg">{title}</h3>
-              <span className="text-xs rounded-full px-2 py-1 bg-[var(--brand)]/20 border border-white/10">SAP</span>
+            <div class="relative">
+              <div class="aspect-[4/3] rounded-3xl glass rr-border p-6 dot-bg">
+                <!-- Diagrama -->
+                <svg viewBox="0 0 680 440" class="w-full h-full">
+                  <g><rect x="20" y="30" width="180" height="80" rx="14" fill="rgba(255,255,255,.03)" stroke="rgba(255,255,255,.12)"/><text x="110" y="74" text-anchor="middle" font-size="18" fill="#dbeafe">Operações</text></g>
+                  <g><rect x="240" y="30" width="200" height="80" rx="14" fill="rgba(255,255,255,.03)" stroke="rgba(255,255,255,.12)"/><text x="340" y="74" text-anchor="middle" font-size="18" fill="#dbeafe">S/4HANA</text></g>
+                  <g><rect x="480" y="30" width="180" height="80" rx="14" fill="rgba(255,255,255,.03)" stroke="rgba(255,255,255,.12)"/><text x="570" y="74" text-anchor="middle" font-size="18" fill="#dbeafe">Fiori</text></g>
+                  <g><rect x="20" y="160" width="200" height="80" rx="14" fill="rgba(255,255,255,.03)" stroke="rgba(255,255,255,.12)"/><text x="120" y="204" text-anchor="middle" font-size="18" fill="#dbeafe">MM • SD</text></g>
+                  <g><rect x="260" y="160" width="160" height="80" rx="14" fill="rgba(255,255,255,.03)" stroke="rgba(255,255,255,.12)"/><text x="340" y="204" text-anchor="middle" font-size="18" fill="#dbeafe">FI/CO</text></g>
+                  <g><rect x="460" y="160" width="200" height="80" rx="14" fill="rgba(255,255,255,.03)" stroke="rgba(255,255,255,.12)"/><text x="560" y="204" text-anchor="middle" font-size="18" fill="#dbeafe">PP • QM</text></g>
+                  <g><rect x="20" y="290" width="240" height="80" rx="14" fill="rgba(255,255,255,.03)" stroke="rgba(255,255,255,.12)"/><text x="140" y="334" text-anchor="middle" font-size="18" fill="#dbeafe">BTP • PI/PO • APIs</text></g>
+                  <g><rect x="300" y="290" width="180" height="80" rx="14" fill="rgba(255,255,255,.03)" stroke="rgba(255,255,255,.12)"/><text x="390" y="334" text-anchor="middle" font-size="18" fill="#dbeafe">QA & Testes</text></g>
+                  <g><rect x="520" y="290" width="140" height="80" rx="14" fill="rgba(255,255,255,.03)" stroke="rgba(255,255,255,.12)"/><text x="590" y="334" text-anchor="middle" font-size="18" fill="#dbeafe">Power BI</text></g>
+                  <!-- setas -->
+                  <g><line x1="110" y1="110" x2="110" y2="160" stroke="#22d3ee" stroke-width="2"/><polygon points="110,160 104,150 116,150" fill="#22d3ee"/></g>
+                  <g><line x1="340" y1="110" x2="340" y2="160" stroke="#22d3ee" stroke-width="2"/><polygon points="340,160 334,150 346,150" fill="#22d3ee"/></g>
+                  <g><line x1="570" y1="110" x2="570" y2="160" stroke="#22d3ee" stroke-width="2"/><polygon points="570,160 564,150 576,150" fill="#22d3ee"/></g>
+                  <g><line x1="220" y1="200" x2="260" y2="200" stroke="#22d3ee" stroke-width="2"/><polygon points="260,200 250,194 250,206" fill="#22d3ee"/></g>
+                  <g><line x1="420" y1="200" x2="460" y2="200" stroke="#22d3ee" stroke-width="2"/><polygon points="460,200 450,194 450,206" fill="#22d3ee"/></g>
+                  <g><line x1="140" y1="240" x2="140" y2="290" stroke="#22d3ee" stroke-width="2"/><polygon points="140,290 134,280 146,280" fill="#22d3ee"/></g>
+                  <g><line x1="340" y1="240" x2="340" y2="290" stroke="#22d3ee" stroke-width="2"/><polygon points="340,290 334,280 346,280" fill="#22d3ee"/></g>
+                  <g><line x1="560" y1="240" x2="560" y2="290" stroke="#22d3ee" stroke-width="2"/><polygon points="560,290 554,280 566,280" fill="#22d3ee"/></g>
+                </svg>
+              </div>
+              <div class="absolute -bottom-6 -right-6 w-28 h-28 rounded-3xl bg-[var(--brand)]/40 flex items-center justify-center rotate-6 rr-border">
+                <span class="text-3xl font-black">R²</span>
+              </div>
             </div>
-            <p className="mt-3 text-slate-300 text-sm">{desc}</p>
-            <ul className="mt-4 space-y-2 text-sm">
-              {bullets.map((b,i)=> <li key={i} className="flex gap-2"><span className="h-1.5 w-1.5 mt-2 rounded-full bg-[var(--accent)]"></span>{b}</li>)}
-            </ul>
-          </article>
-        );
-      }
+          </div>
+        </div>
+      </section>
 
-      function CaseCard({title, challenge, approach, result}){
-        return (
-          <article className="glass rr-border rounded-3xl p-6">
-            <h3 className="font-bold text-lg">{title}</h3>
-            <dl className="mt-3 space-y-2 text-sm text-slate-300">
-              <div><dt className="text-slate-400">Desafio</dt><dd>{challenge}</dd></div>
-              <div><dt className="text-slate-400">Abordagem</dt><dd>{approach}</dd></div>
-              <div><dt className="text-slate-400">Resultado</dt><dd className="text-white font-semibold">{result}</dd></div>
-            </dl>
-          </article>
-        );
-      }
+      <!-- SOBRE -->
+      <section id="sobre" class="py-20">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="grid lg:grid-cols-3 gap-8">
+            <div class="lg:col-span-2">
+              <h2 class="text-2xl sm:text-3xl font-extrabold">Sobre</h2>
+              <p class="mt-4 text-slate-300 leading-relaxed">
+                Atuo na interseção entre <span class="font-semibold text-white">SAP</span> e <span class="font-semibold text-white">Gestão da Qualidade</span>, transformando mapas de processo em ganhos reais de produtividade. Meu foco é <em>blueprint enxuto</em>, integrações limpas e governança que permanece após o go-live.
+              </p>
+              <ul class="mt-6 flex flex-wrap gap-3">
+                <li class="tag text-xs rounded-full px-3 py-1 text-slate-200/90">S/4HANA</li>
+                <li class="tag text-xs rounded-full px-3 py-1 text-slate-200/90">Fiori</li>
+                <li class="tag text-xs rounded-full px-3 py-1 text-slate-200/90">BTP</li>
+                <li class="tag text-xs rounded-full px-3 py-1 text-slate-200/90">PI/PO</li>
+                <li class="tag text-xs rounded-full px-3 py-1 text-slate-200/90">API REST</li>
+                <li class="tag text-xs rounded-full px-3 py-1 text-slate-200/90">MM</li>
+                <li class="tag text-xs rounded-full px-3 py-1 text-slate-200/90">SD</li>
+                <li class="tag text-xs rounded-full px-3 py-1 text-slate-200/90">FI/CO</li>
+                <li class="tag text-xs rounded-full px-3 py-1 text-slate-200/90">PP</li>
+                <li class="tag text-xs rounded-full px-3 py-1 text-slate-200/90">QM</li>
+                <li class="tag text-xs rounded-full px-3 py-1 text-slate-200/90">ABAP (básico)</li>
+                <li class="tag text-xs rounded-full px-3 py-1 text-slate-200/90">Power BI</li>
+              </ul>
+            </div>
+            <aside class="space-y-3">
+              <div class="glass rounded-xl px-3 py-2 inline-flex items-center gap-2 text-sm"><span class="h-2 w-2 rounded-full bg-[var(--accent)]"></span>Disponível para projetos</div>
+              <div class="glass rounded-xl px-3 py-2 inline-flex items-center gap-2 text-sm"><span class="h-2 w-2 rounded-full bg-[var(--accent)]"></span>Atuação: Brasil (remoto/presencial)</div>
+              <div class="glass rounded-xl px-3 py-2 inline-flex items-center gap-2 text-sm"><span class="h-2 w-2 rounded-full bg-[var(--accent)]"></span>Idiomas: PT • EN</div>
+            </aside>
+          </div>
+        </div>
+      </section>
 
-      function Testimonial({name, role, text}){
-        return (
-          <blockquote className="glass rr-border rounded-3xl p-6">
-            <p className="text-slate-200">“{text}”</p>
-            <footer className="mt-4 text-sm text-slate-400">— {name}, <span className="text-slate-300">{role}</span></footer>
-          </blockquote>
-        );
-      }
+      <!-- SOLUÇÕES -->
+      <section id="solucoes" class="py-20">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <h2 class="text-2xl sm:text-3xl font-extrabold">Soluções</h2>
+          <div class="mt-8 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <article class="glass rr-border rounded-3xl p-6">
+              <div class="flex items-center justify-between"><h3 class="font-bold text-lg">Descoberta &amp; Blueprint</h3><span class="text-xs rounded-full px-2 py-1 bg-[var(--brand)]/20 border border-white/10">SAP</span></div>
+              <p class="mt-3 text-slate-300 text-sm">Mapeamento AS-IS/TO-BE com foco em valor e UX Fiori.</p>
+              <ul class="mt-4 space-y-2 text-sm"><li class="flex gap-2"><span class="h-1.5 w-1.5 mt-2 rounded-full bg-[var(--accent)]"></span>Workshops de processo (SIPOC)</li><li class="flex gap-2"><span class="h-1.5 w-1.5 mt-2 rounded-full bg-[var(--accent)]"></span>Backlog priorizado por impacto</li><li class="flex gap-2"><span class="h-1.5 w-1.5 mt-2 rounded-full bg-[var(--accent)]"></span>Roadmap de integrações</li></ul>
+            </article>
+            <article class="glass rr-border rounded-3xl p-6">
+              <div class="flex items-center justify-between"><h3 class="font-bold text-lg">Implantação S/4HANA</h3><span class="text-xs rounded-full px-2 py-1 bg-[var(--brand)]/20 border border-white/10">SAP</span></div>
+              <p class="mt-3 text-slate-300 text-sm">Entrega ágil, testes sólidos e governança clara.</p>
+              <ul class="mt-4 space-y-2 text-sm"><li class="flex gap-2"><span class="h-1.5 w-1.5 mt-2 rounded-full bg-[var(--accent)]"></span>Configuração modular</li><li class="flex gap-2"><span class="h-1.5 w-1.5 mt-2 rounded-full bg-[var(--accent)]"></span>Plano de testes &amp; QA</li><li class="flex gap-2"><span class="h-1.5 w-1.5 mt-2 rounded-full bg-[var(--accent)]"></span>Handover e treinamento</li></ul>
+            </article>
+            <article class="glass rr-border rounded-3xl p-6">
+              <div class="flex items-center justify-between"><h3 class="font-bold text-lg">Integrações SAP</h3><span class="text-xs rounded-full px-2 py-1 bg-[var(--brand)]/20 border border-white/10">SAP</span></div>
+              <p class="mt-3 text-slate-300 text-sm">PI/PO, BTP e APIs REST para dados sem atrito.</p>
+              <ul class="mt-4 space-y-2 text-sm"><li class="flex gap-2"><span class="h-1.5 w-1.5 mt-2 rounded-full bg-[var(--accent)]"></span>Catálogo de integrações</li><li class="flex gap-2"><span class="h-1.5 w-1.5 mt-2 rounded-full bg-[var(--accent)]"></span>Padrões de autenticação</li><li class="flex gap-2"><span class="h-1.5 w-1.5 mt-2 rounded-full bg-[var(--accent)]"></span>Monitoramento e logs</li></ul>
+            </article>
+            <article class="glass rr-border rounded-3xl p-6">
+              <div class="flex items-center justify-between"><h3 class="font-bold text-lg">Qualidade (QM)</h3><span class="text-xs rounded-full px-2 py-1 bg-[var(--brand)]/20 border border-white/10">SAP</span></div>
+              <p class="mt-3 text-slate-300 text-sm">Auditorias, amostragem e KPIs que reduzem falhas.</p>
+              <ul class="mt-4 space-y-2 text-sm"><li class="flex gap-2"><span class="h-1.5 w-1.5 mt-2 rounded-full bg-[var(--accent)]"></span>Planos de inspeção</li><li class="flex gap-2"><span class="h-1.5 w-1.5 mt-2 rounded-full bg-[var(--accent)]"></span>Automação de não conformidades</li><li class="flex gap-2"><span class="h-1.5 w-1.5 mt-2 rounded-full bg-[var(--accent)]"></span>Dashboards de qualidade</li></ul>
+            </article>
+            <article class="glass rr-border rounded-3xl p-6">
+              <div class="flex items-center justify-between"><h3 class="font-bold text-lg">Automação &amp; Analytics</h3><span class="text-xs rounded-full px-2 py-1 bg-[var(--brand)]/20 border border-white/10">SAP</span></div>
+              <p class="mt-3 text-slate-300 text-sm">BTP, bots e Power BI para decisões em tempo real.</p>
+              <ul class="mt-4 space-y-2 text-sm"><li class="flex gap-2"><span class="h-1.5 w-1.5 mt-2 rounded-full bg-[var(--accent)]"></span>Jobs e eventos</li><li class="flex gap-2"><span class="h-1.5 w-1.5 mt-2 rounded-full bg-[var(--accent)]"></span>Conectores oficiais</li><li class="flex gap-2"><span class="h-1.5 w-1.5 mt-2 rounded-full bg-[var(--accent)]"></span>Modelos analíticos</li></ul>
+            </article>
+            <article class="glass rr-border rounded-3xl p-6">
+              <div class="flex items-center justify-between"><h3 class="font-bold text-lg">Sustentação (AMS)</h3><span class="text-xs rounded-full px-2 py-1 bg-[var(--brand)]/20 border border-white/10">SAP</span></div>
+              <p class="mt-3 text-slate-300 text-sm">Operação estável, SLAs claros e melhoria contínua.</p>
+              <ul class="mt-4 space-y-2 text-sm"><li class="flex gap-2"><span class="h-1.5 w-1.5 mt-2 rounded-full bg-[var(--accent)]"></span>Runbook de incidentes</li><li class="flex gap-2"><span class="h-1.5 w-1.5 mt-2 rounded-full bg-[var(--accent)]"></span>KPIs de suporte</li><li class="flex gap-2"><span class="h-1.5 w-1.5 mt-2 rounded-full bg-[var(--accent)]"></span>Ciclos de otimização</li></ul>
+            </article>
+          </div>
+        </div>
+      </section>
 
-      const solutions = [
-        { title:"Descoberta & Blueprint", desc:"Mapeamento AS-IS/TO-BE com foco em valor e UX Fiori.", bullets:["Workshops de processo (SIPOC)","Backlog priorizado por impacto","Roadmap de integrações"] },
-        { title:"Implantação S/4HANA", desc:"Entrega ágil, testes sólidos e governança clara.", bullets:["Configuração modular","Plano de testes & QA","Handover e treinamento"] },
-        { title:"Integrações SAP", desc:"PI/PO, BTP e APIs REST para dados sem atrito.", bullets:["Catálogo de integrações","Padrões de autenticação","Monitoramento e logs"] },
-        { title:"Qualidade (QM)", desc:"Auditorias, amostragem e KPIs que reduzem falhas.", bullets:["Planos de inspeção","Automação de não conformidades","Dashboards de qualidade"] },
-        { title:"Automação & Analytics", desc:"BTP, bots e Power BI para decisões em tempo real.", bullets:["Jobs e eventos","Conectores oficiais","Modelos analíticos"] },
-        { title:"Sustentação (AMS)", desc:"Operação estável, SLAs claros e melhoria contínua.", bullets:["Runbook de incidentes","KPIs de suporte","Ciclos de otimização"] },
-      ];
+      <!-- MÉTODO -->
+      <section id="metodo" class="py-20">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="grid lg:grid-cols-2 gap-10 items-start">
+            <div>
+              <h2 class="text-2xl sm:text-3xl font-extrabold">Método R²</h2>
+              <p class="mt-4 text-slate-300 max-w-prose">Três movimentos para sair do <em>as-is</em> para a performance: <strong>Rastrear</strong> gargalos, <strong>Refinar</strong> processos e <strong>Realizar</strong> entregas com governança.</p>
+              <ol class="mt-6 space-y-4">
+                <li class="flex gap-4"><span class="h-9 w-9 rounded-xl bg-[var(--accent)] text-slate-900 font-extrabold flex items-center justify-center">1</span><div><div class="font-bold">Rastrear</div><div class="text-slate-300 text-sm">Mapeamento fino de processos, métricas e dor operacional.</div></div></li>
+                <li class="flex gap-4"><span class="h-9 w-9 rounded-xl bg-[var(--accent)] text-slate-900 font-extrabold flex items-center justify-center">2</span><div><div class="font-bold">Refinar</div><div class="text-slate-300 text-sm">Blueprint enxuto, integrações e desenho Fiori centrado no usuário.</div></div></li>
+                <li class="flex gap-4"><span class="h-9 w-9 rounded-xl bg-[var(--accent)] text-slate-900 font-extrabold flex items-center justify-center">3</span><div><div class="font-bold">Realizar</div><div class="text-slate-300 text-sm">Implantação ágil, documentação viva e handover claro para sustentação.</div></div></li>
+              </ol>
+            </div>
+            <div class="glass rr-border rounded-3xl p-6">
+              <h3 class="font-bold">Entregáveis</h3>
+              <ul class="mt-4 grid sm:grid-cols-2 gap-3 text-sm">
+                <li class="glass rounded-xl px-3 py-2">Matriz SIPOC &amp; indicadores</li>
+                <li class="glass rounded-xl px-3 py-2">Blueprint AS-IS/TO-BE</li>
+                <li class="glass rounded-xl px-3 py-2">Catálogo de integrações</li>
+                <li class="glass rounded-xl px-3 py-2">Backlog Fiori priorizado</li>
+                <li class="glass rounded-xl px-3 py-2">Plano de testes &amp; QA</li>
+                <li class="glass rounded-xl px-3 py-2">Kit de treinamento &amp; handover</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
 
-      const cases = [
-        { title:"Indústria — Redução de retrabalho", challenge:"Inconsistências entre PP e QM geravam reprocesso.", approach:"Ajuste de planos de inspeção e eventos de qualidade integrados ao chão de fábrica.", result:"-34% retrabalho em 3 meses; lead time -12%." },
-        { title:"Varejo — Go-live S/4HANA", challenge:"Prazos agressivos e equipe enxuta.", approach:"Backlog enxuto, Fiori crítico e automações BTP.", result:"Go-live em 90 dias com 0 incidentes críticos." },
-        { title:"Alimentos — Conformidade & rastreabilidade", challenge:"Auditorias com apontamentos recorrentes.", approach:"SIPOC + PI/PO + painéis Power BI por lote.", result:"Conformidade 98% e rastreio por lote em D+1." },
-      ];
+      <!-- CASES -->
+      <section id="cases" class="py-20">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <h2 class="text-2xl sm:text-3xl font-extrabold">Cases</h2>
+          <div class="mt-8 grid lg:grid-cols-3 md:grid-cols-2 gap-6">
+            <article class="glass rr-border rounded-3xl p-6">
+              <h3 class="font-bold text-lg">Indústria — Redução de retrabalho</h3>
+              <dl class="mt-3 space-y-2 text-sm text-slate-300">
+                <div><dt class="text-slate-400">Desafio</dt><dd>Inconsistências entre PP e QM geravam reprocesso.</dd></div>
+                <div><dt class="text-slate-400">Abordagem</dt><dd>Ajuste de planos de inspeção e eventos de qualidade integrados ao chão de fábrica.</dd></div>
+                <div><dt class="text-slate-400">Resultado</dt><dd class="text-white font-semibold">-34% retrabalho em 3 meses; lead time -12%.</dd></div>
+              </dl>
+            </article>
+            <article class="glass rr-border rounded-3xl p-6">
+              <h3 class="font-bold text-lg">Varejo — Go-live S/4HANA</h3>
+              <dl class="mt-3 space-y-2 text-sm text-slate-300">
+                <div><dt class="text-slate-400">Desafio</dt><dd>Prazos agressivos e equipe enxuta.</dd></div>
+                <div><dt class="text-slate-400">Abordagem</dt><dd>Backlog enxuto, Fiori crítico e automações BTP.</dd></div>
+                <div><dt class="text-slate-400">Resultado</dt><dd class="text-white font-semibold">Go-live em 90 dias com 0 incidentes críticos.</dd></div>
+              </dl>
+            </article>
+            <article class="glass rr-border rounded-3xl p-6">
+              <h3 class="font-bold text-lg">Alimentos — Conformidade &amp; rastreabilidade</h3>
+              <dl class="mt-3 space-y-2 text-sm text-slate-300">
+                <div><dt class="text-slate-400">Desafio</dt><dd>Auditorias com apontamentos recorrentes.</dd></div>
+                <div><dt class="text-slate-400">Abordagem</dt><dd>SIPOC + PI/PO + painéis Power BI por lote.</dd></div>
+                <div><dt class="text-slate-400">Resultado</dt><dd class="text-white font-semibold">Conformidade 98% e rastreio por lote em D+1.</dd></div>
+              </dl>
+            </article>
+          </div>
+        </div>
+      </section>
 
-      const testimonials = [
-        { name:"Carolina M.", role:"Head de Operações", text:"Visão de ponta-a-ponta e execução pragmática. Entregas consistentes." },
-        { name:"Luiz A.", role:"Gerente de TI", text:"Traduziu o negócio para SAP e evitou customizações desnecessárias." },
-        { name:"Renata P.", role:"Qualidade", text:"Os indicadores de não conformidade caíram já no primeiro ciclo." },
-      ];
+      <!-- CONTATO -->
+      <section id="contato" class="py-20">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="grid lg:grid-cols-2 gap-10 items-start">
+            <div>
+              <h2 class="text-2xl sm:text-3xl font-extrabold">Vamos conversar</h2>
+              <p class="mt-3 text-slate-300">Me conte sobre seu contexto SAP e metas de Qualidade. Responderei em 1 dia útil.</p>
+              <ul class="mt-6 space-y-3 text-sm">
+                <li class="flex items-center gap-3"><span class="h-2 w-2 rounded-full bg-[var(--accent)]"></span> Email: <a class="underline" href="mailto:Rayan.ribeirosap@gmail.com">Rayan.ribeirosap@gmail.com</a></li>
+                <li class="flex items-center gap-3"><span class="h-2 w-2 rounded-full bg-[var(--accent)]"></span> LinkedIn: <a class="underline" target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/rayanribeiro/">linkedin.com/in/rayanribeiro</a></li>
+                <li class="flex items-center gap-3"><span class="h-2 w-2 rounded-full bg-[var(--accent)]"></span> WhatsApp: <a class="underline" href="#">+55 (00) 00000-0000</a></li>
+              </ul>
+              <div class="mt-6 flex gap-3">
+                <a href="#" class="rounded-xl px-5 py-3 glass">Baixar CV (PDF)</a>
+                <a href="#solucoes" class="rounded-xl px-5 py-3 bg-[var(--brand)]/90 hover:bg-[var(--brand)]">Ver portfólio</a>
+              </div>
+            </div>
+            <form onsubmit="event.preventDefault(); alert('Obrigado! Sua mensagem foi recebida (demo).');" class="glass rr-border rounded-3xl p-6">
+              <div class="grid gap-4">
+                <label class="text-sm block"><span class="text-slate-300">Nome</span><input class="mt-1 w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl outline-none focus:ring-2 focus:ring-[var(--accent)]" placeholder="Seu nome"></label>
+                <label class="text-sm block"><span class="text-slate-300">Empresa</span><input class="mt-1 w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl outline-none focus:ring-2 focus:ring-[var(--accent)]" placeholder="Ex.: BRF"></label>
+                <label class="text-sm block"><span class="text-slate-300">Email</span><input type="email" class="mt-1 w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl outline-none focus:ring-2 focus:ring-[var(--accent)]" placeholder="voce@empresa.com"></label>
+                <label class="text-sm block"><span class="text-slate-300">Mensagem</span><textarea class="mt-1 w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl outline-none focus:ring-2 focus:ring-[var(--accent)]" placeholder="Contexto, prazos e objetivos"></textarea></label>
+                <button class="mt-2 rounded-xl px-5 py-3 bg-[var(--accent)]/90 hover:bg-[var(--accent)] text-slate-900 font-semibold">Enviar</button>
+                <p class="text-xs text-slate-400">Este formulário é demonstrativo. Integraremos com seu provedor de email/CRM no deploy.</p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
 
-      const root = ReactDOM.createRoot(document.getElementById('root'));
-      root.render(<RayanRibeiroSite/>);
+      <!-- RODAPÉ -->
+      <footer class="py-10 border-t border-white/10">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+          <div class="flex items-center gap-3 opacity-90">
+            <div class="relative h-8 w-8 rounded-2xl rr-border grid place-items-center overflow-hidden">
+              <img src="./rr-logo.svg" alt="RR" class="h-[85%] w-[85%]">
+            </div>
+            <span class="text-sm text-slate-300">© <span id="year"></span> Rayan Ribeiro • Consultor SAP & Qualidade</span>
+          </div>
+          <div class="text-xs text-slate-400">Design &amp; dev — Samantha + Orion</div>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      // Atualiza o ano automaticamente
+      document.getElementById('year').textContent = new Date().getFullYear();
     </script>
   </body>
 </html>
+
