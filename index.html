@@ -6,23 +6,34 @@
 <title>Rayan Ribeiro — Consultor SAP & Qualidade</title>
 <meta name="description" content="Consultor SAP & Analista de Qualidade. Processos que viram performance.">
 <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+
+<!-- Open Graph / Twitter -->
+<meta property="og:title" content="Rayan Ribeiro — Consultor SAP & Qualidade">
+<meta property="og:description" content="Processos que viram performance. SAP S/4HANA, Qualidade, integrações e governança.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://SamanthaPatricio.github.io/rayan-site/">
+<meta property="og:image" content="https://SamanthaPatricio.github.io/rayan-site/favicon.svg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Rayan Ribeiro — Consultor SAP & Qualidade">
+<meta name="twitter:description" content="Processos que viram performance.">
+<meta name="twitter:image" content="https://SamanthaPatricio.github.io/rayan-site/favicon.svg">
+
 <style>
-  /* ====== Design tokens ====== */
   :root{
-    --brand:#4361ee; --accent:#22d3ee; --bg:#0f172a; --text:#e2e8f0; --muted:#94a3b8;
+    --brand:#4361ee; --accent:#22d3ee; --bg:#0f172a; --text:#e2e8f0;
     --glass1:rgba(255,255,255,.08); --glass2:rgba(255,255,255,.02); --line:rgba(255,255,255,.12);
   }
-  /* ====== Base ====== */
   *{box-sizing:border-box}
   html,body{height:100%}
   body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial}
+  a{color:inherit;text-decoration:none}
+  a.underline{text-decoration:underline;text-underline-offset:3px}
   h1,h2,h3{margin:0 0 .5rem}
   h1{font-size:clamp(32px,5vw,48px);line-height:1.1}
   h2{font-size:clamp(22px,3vw,30px)}
   h3{font-size:20px}
-  a{color:inherit;text-decoration:none}
-  a.underline{text-decoration:underline;text-underline-offset:3px}
   .container{max-width:1180px;margin:0 auto;padding:0 20px}
+  .section{padding:80px 0}
   .btn{display:inline-block;padding:12px 20px;border-radius:14px;font-weight:600}
   .btn-primary{background:color-mix(in srgb,var(--brand) 90%, transparent)}
   .btn-primary:hover{background:var(--brand)}
@@ -31,9 +42,8 @@
   .grid{display:grid;gap:24px}
   .grid-2{grid-template-columns:1fr 1fr}
   .grid-3{grid-template-columns:repeat(3,1fr)}
-  .section{padding:80px 0}
   .muted{color:#cbd5e1}
-  /* ====== efeitos ====== */
+
   .grad{background:
     radial-gradient(1200px 600px at 10% -10%, rgba(67,97,238,.25), transparent),
     radial-gradient(1200px 600px at 110% 10%, rgba(34,211,238,.18), transparent)
@@ -44,10 +54,7 @@
     background-size:40px 40px;
   }
   .blob{position:absolute;filter:blur(50px);opacity:.6;border-radius:999px}
-  .glass{
-    background:linear-gradient(180deg,var(--glass1),var(--glass2));
-    border:1px solid var(--line);backdrop-filter:blur(8px)
-  }
+  .glass{background:linear-gradient(180deg,var(--glass1),var(--glass2));border:1px solid var(--line);backdrop-filter:blur(8px)}
   .card{border-radius:22px;padding:22px}
   .tag{display:inline-block;border:1px dashed rgba(255,255,255,.18);border-radius:999px;padding:6px 10px;font-size:12px;margin:4px 6px 0 0}
   .rr-border{box-shadow: inset 0 0 0 1px rgba(255,255,255,.08)}
@@ -55,7 +62,6 @@
   header{position:sticky;top:0;z-index:50;background:linear-gradient(180deg, rgba(15,23,42,.9), rgba(15,23,42,.6))}
   nav a{opacity:.85;margin-left:22px}
   nav a:hover{opacity:1}
-  /* ====== layout responsivo ====== */
   @media (max-width:960px){ .grid-2{grid-template-columns:1fr} .grid-3{grid-template-columns:1fr 1fr} nav{display:none} }
   @media (max-width:640px){ .grid-3{grid-template-columns:1fr} }
 </style>
@@ -65,7 +71,7 @@
     <div class="blob" style="top:-120px;left:-80px;width:460px;height:460px;background:var(--brand)"></div>
     <div class="blob" style="top:160px;right:-80px;width:420px;height:420px;background:var(--accent)"></div>
 
-    <!-- ====== NAV ====== -->
+    <!-- NAV -->
     <header>
       <div class="container" style="display:flex;align-items:center;justify-content:space-between;padding:14px 20px">
         <a href="#topo" style="display:flex;align-items:center;gap:12px">
@@ -84,13 +90,11 @@
           <a href="#cases">Cases</a>
           <a href="#contato">Contato</a>
         </nav>
-        <div>
-          <a class="btn btn-primary" href="#contato">Agendar conversa</a>
-        </div>
+        <div><a class="btn btn-primary" href="#contato">Agendar conversa</a></div>
       </div>
     </header>
 
-    <!-- ====== HERO ====== -->
+    <!-- HERO -->
     <section class="container" style="padding:60px 20px 80px;position:relative">
       <div class="grid-bg"></div>
       <div class="grid grid-2" style="align-items:center">
@@ -101,7 +105,9 @@
           </p>
           <h1 class="rr-shadow" style="margin-top:18px">
             Rayan Ribeiro
-            <span style="display:block;background:linear-gradient(90deg,var(--accent),var(--brand));-webkit-background-clip:text;background-clip:text;color:transparent">Processos que viram performance</span>
+            <span style="display:block;background:linear-gradient(90deg,var(--accent),var(--brand));-webkit-background-clip:text;background-clip:text;color:transparent">
+              Processos que viram performance
+            </span>
           </h1>
           <p class="muted" style="max-width:620px;margin-top:16px">
             Eu conecto operação e estratégia com SAP S/4HANA e práticas de Qualidade para reduzir retrabalho, elevar conformidade e acelerar decisões.
@@ -110,7 +116,6 @@
             <a class="btn btn-accent" href="#solucoes">Ver soluções</a>
             <a class="btn glass" href="#cases">Explorar cases</a>
           </div>
-
           <div style="margin-top:28px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:500px">
             <div class="glass card" style="text-align:center"><div style="font-size:24px;font-weight:800;color:#fff">+12</div><div class="muted" style="font-size:12px">Projetos</div></div>
             <div class="glass card" style="text-align:center"><div style="font-size:24px;font-weight:800;color:#fff">-34%</div><div class="muted" style="font-size:12px">Redução de retrabalho</div></div>
@@ -120,7 +125,6 @@
 
         <div style="position:relative">
           <div class="glass card" style="border-radius:24px;padding:18px">
-            <!-- diagrama -->
             <svg viewBox="0 0 680 440" style="width:100%;height:auto">
               <g><rect x="20" y="30" width="180" height="80" rx="14" fill="rgba(255,255,255,.03)" stroke="rgba(255,255,255,.12)"/><text x="110" y="74" text-anchor="middle" font-size="18" fill="#dbeafe">Operações</text></g>
               <g><rect x="240" y="30" width="200" height="80" rx="14" fill="rgba(255,255,255,.03)" stroke="rgba(255,255,255,.12)"/><text x="340" y="74" text-anchor="middle" font-size="18" fill="#dbeafe">S/4HANA</text></g>
@@ -148,7 +152,7 @@
       </div>
     </section>
 
-    <!-- ====== SOBRE ====== -->
+    <!-- SOBRE -->
     <section id="sobre" class="section">
       <div class="container grid grid-2">
         <div>
@@ -177,7 +181,7 @@
       </div>
     </section>
 
-    <!-- ====== SOLUÇÕES ====== -->
+    <!-- SOLUÇÕES -->
     <section id="solucoes" class="section">
       <div class="container">
         <h2>Soluções</h2>
@@ -216,7 +220,7 @@
       </div>
     </section>
 
-    <!-- ====== MÉTODO ====== -->
+    <!-- MÉTODO -->
     <section id="metodo" class="section">
       <div class="container grid grid-2">
         <div>
@@ -242,7 +246,7 @@
       </div>
     </section>
 
-    <!-- ====== CASES ====== -->
+    <!-- CASES -->
     <section id="cases" class="section">
       <div class="container">
         <h2>Cases</h2>
@@ -275,70 +279,71 @@
       </div>
     </section>
 
-    <!-- ====== CONTATO ====== -->
-<section id="contato" class="section">
-  <div class="container grid grid-2">
-    <div>
-      <h2>Vamos conversar</h2>
-      <p class="muted">Me conte sobre seu contexto SAP e metas de Qualidade. Responderei em 1 dia útil.</p>
-      <ul class="muted" style="list-style:none;padding:0;margin:14px 0">
-        <li>• Email: <a class="underline" href="mailto:Rayan.ribeirosap@gmail.com">Rayan.ribeirosap@gmail.com</a></li>
-        <li>• LinkedIn: <a class="underline" target="_blank" rel="noopener" href="https://www.linkedin.com/in/rayanribeiro/">linkedin.com/in/rayanribeiro</a></li>
-        <!-- WhatsApp REMOVIDO -->
-      </ul>
-      <div style="display:flex;gap:10px;flex-wrap:wrap">
-        <!-- Botão de CV REMOVIDO -->
-        <a class="btn btn-primary" href="#solucoes">Ver portfólio</a>
+    <!-- CONTATO -->
+    <section id="contato" class="section">
+      <div class="container grid grid-2">
+
+        <!-- Banner de sucesso (oculto por padrão) -->
+        <div id="msg-ok" style="display:none;margin:0 0 18px 0" class="glass card">
+          🎉 <b>Mensagem enviada!</b> Vou te responder por e-mail em até 1 dia útil.
+        </div>
+
+        <div>
+          <h2>Vamos conversar</h2>
+          <p class="muted">Me conte sobre seu contexto SAP e metas de Qualidade. Responderei em 1 dia útil.</p>
+          <ul class="muted" style="list-style:none;padding:0;margin:14px 0">
+            <li>• Email:
+              <a id="mailLink" class="underline" href="mailto:Rayan.ribeirosap@gmail.com">
+                Rayan.ribeirosap@gmail.com
+              </a>
+              <button id="copyMailBtn" class="btn glass" style="padding:6px 10px;margin-left:8px">Copiar</button>
+            </li>
+            <li>• LinkedIn:
+              <a class="underline" target="_blank" rel="noopener" href="https://www.linkedin.com/in/rayanribeiro/">
+                linkedin.com/in/rayanribeiro
+              </a>
+            </li>
+          </ul>
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <a class="btn btn-primary" href="#solucoes">Ver portfólio</a>
+          </div>
+        </div>
+
+        <!-- Formulário: FormSubmit -->
+        <form class="glass card"
+              action="https://formsubmit.co/Rayan.ribeirosap@gmail.com"
+              method="POST">
+          <input type="hidden" name="_subject" value="Novo contato do site — rayan-site">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_template" value="table">
+          <input type="text" name="_honey" style="display:none">
+          <input type="hidden" name="_next" value="https://SamanthaPatricio.github.io/rayan-site/?sucesso=1#contato">
+
+          <label class="muted" style="display:block;margin-bottom:10px">Nome
+            <input name="nome" required placeholder="Seu nome"
+                   style="margin-top:6px;width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.05);color:var(--text);outline:none">
+          </label>
+          <label class="muted" style="display:block;margin-bottom:10px">Empresa
+            <input name="empresa" placeholder="Ex.: BRF"
+                   style="margin-top:6px;width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.05);color:var(--text);outline:none">
+          </label>
+          <label class="muted" style="display:block;margin-bottom:10px">Email
+            <input type="email" name="email" required placeholder="voce@empresa.com"
+                   style="margin-top:6px;width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.05);color:var(--text);outline:none">
+          </label>
+          <label class="muted" style="display:block;margin-bottom:12px">Mensagem
+            <textarea name="mensagem" required placeholder="Contexto, prazos e objetivos"
+                      style="margin-top:6px;width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.05);color:var(--text);min-height:110px;outline:none"></textarea>
+          </label>
+          <button class="btn btn-accent" type="submit">Enviar</button>
+          <p class="muted" style="font-size:12px;margin-top:8px">
+            Este formulário é enviado via FormSubmit. Na primeira mensagem, confirme seu e-mail para ativar.
+          </p>
+        </form>
       </div>
-    </div>
+    </section>
 
-    <!-- FORM em produção via FormSubmit -->
-    <form class="glass card"
-          action="https://formsubmit.co/Rayan.ribeirosap@gmail.com"
-          method="POST">
-      <!-- config -->
-      <input type="hidden" name="_subject" value="Novo contato do site — rayan-site">
-      <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_template" value="table">
-      <input type="text" name="_honey" style="display:none"> <!-- honeypot anti-spam -->
-      <input type="hidden" name="_next" value="https://SamanthaPatricio.github.io/rayan-site/?sucesso=1#contato">
-
-      <label class="muted" style="display:block;margin-bottom:10px">Nome
-        <input name="nome" required placeholder="Seu nome"
-               style="margin-top:6px;width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.05);color:var(--text);outline:none">
-      </label>
-
-      <label class="muted" style="display:block;margin-bottom:10px">Empresa
-        <input name="empresa" placeholder="Ex.: BRF"
-               style="margin-top:6px;width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.05);color:var(--text);outline:none">
-      </label>
-
-      <label class="muted" style="display:block;margin-bottom:10px">Email
-        <input type="email" name="email" required placeholder="voce@empresa.com"
-               style="margin-top:6px;width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.05);color:var(--text);outline:none">
-      </label>
-
-      <label class="muted" style="display:block;margin-bottom:12px">Mensagem
-        <textarea name="mensagem" required placeholder="Contexto, prazos e objetivos"
-                  style="margin-top:6px;width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.05);color:var(--text);min-height:110px;outline:none"></textarea>
-      </label>
-
-      <button class="btn btn-accent" type="submit">Enviar</button>
-      <p class="muted" style="font-size:12px;margin-top:8px">
-        Este formulário é enviado via FormSubmit. Na primeira mensagem, confirme seu e-mail para ativar.
-      </p>
-    </form>
-  </div>
-</section>
-
-<!-- Mensagem de sucesso simples -->
-<script>
-  if (new URLSearchParams(location.search).get('sucesso') === '1') {
-    alert('Obrigado! Recebemos sua mensagem.');
-  }
-</script>
-
-    <!-- ====== RODAPÉ ====== -->
+    <!-- RODAPÉ -->
     <footer style="padding:30px 0;border-top:1px solid var(--line)">
       <div class="container" style="display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap">
         <div style="display:flex;align-items:center;gap:10px;opacity:.9">
@@ -352,8 +357,35 @@
     </footer>
   </div>
 
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script>
+    // Ano do rodapé
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mostra banner de sucesso se ?sucesso=1 vier na URL
+    (function () {
+      const p = new URLSearchParams(location.search);
+      if (p.get('sucesso') === '1') {
+        const ok = document.getElementById('msg-ok');
+        if (ok) ok.style.display = 'block';
+        history.replaceState({}, '', location.pathname + '#contato');
+      }
+    })();
+
+    // Botão copiar e-mail
+    (function () {
+      const btn = document.getElementById('copyMailBtn');
+      const mail = 'Rayan.ribeirosap@gmail.com';
+      if (btn) {
+        btn.addEventListener('click', async () => {
+          try {
+            await navigator.clipboard.writeText(mail);
+            const old = btn.textContent;
+            btn.textContent = 'Copiado!';
+            setTimeout(() => (btn.textContent = old), 1500);
+          } catch (e) {}
+        });
+      }
+    })();
+  </script>
 </body>
 </html>
-
-
