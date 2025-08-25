@@ -276,39 +276,67 @@
     </section>
 
     <!-- ====== CONTATO ====== -->
-    <section id="contato" class="section">
-      <div class="container grid grid-2">
-        <div>
-          <h2>Vamos conversar</h2>
-          <p class="muted">Me conte sobre seu contexto SAP e metas de Qualidade. Responderei em 1 dia útil.</p>
-          <ul class="muted" style="list-style:none;padding:0;margin:14px 0">
-            <li>• Email: <a class="underline" href="mailto:Rayan.ribeirosap@gmail.com">Rayan.ribeirosap@gmail.com</a></li>
-            <li>• LinkedIn: <a class="underline" target="_blank" rel="noopener" href="https://www.linkedin.com/in/rayanribeiro/">linkedin.com/in/rayanribeiro</a></li>
-            <li>• WhatsApp: <a class="underline" href="#">+55 (00) 00000-0000</a></li>
-          </ul>
-          <div style="display:flex;gap:10px;flex-wrap:wrap">
-            <a class="btn glass" href="#">Baixar CV (PDF)</a>
-            <a class="btn btn-primary" href="#solucoes">Ver portfólio</a>
-          </div>
-        </div>
-        <form class="glass card" onsubmit="event.preventDefault(); alert('Obrigado! Sua mensagem foi recebida (demo).');">
-          <label class="muted" style="display:block;margin-bottom:10px">Nome
-            <input placeholder="Seu nome" style="margin-top:6px;width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.05);color:var(--text);outline:none">
-          </label>
-          <label class="muted" style="display:block;margin-bottom:10px">Empresa
-            <input placeholder="Ex.: BRF" style="margin-top:6px;width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.05);color:var(--text);outline:none">
-          </label>
-          <label class="muted" style="display:block;margin-bottom:10px">Email
-            <input type="email" placeholder="voce@empresa.com" style="margin-top:6px;width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.05);color:var(--text);outline:none">
-          </label>
-          <label class="muted" style="display:block;margin-bottom:12px">Mensagem
-            <textarea placeholder="Contexto, prazos e objetivos" style="margin-top:6px;width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.05);color:var(--text);min-height:110px;outline:none"></textarea>
-          </label>
-          <button class="btn btn-accent" type="submit">Enviar</button>
-          <p class="muted" style="font-size:12px;margin-top:8px">Este formulário é demonstrativo. Integraremos com email/CRM no deploy.</p>
-        </form>
+<section id="contato" class="section">
+  <div class="container grid grid-2">
+    <div>
+      <h2>Vamos conversar</h2>
+      <p class="muted">Me conte sobre seu contexto SAP e metas de Qualidade. Responderei em 1 dia útil.</p>
+      <ul class="muted" style="list-style:none;padding:0;margin:14px 0">
+        <li>• Email: <a class="underline" href="mailto:Rayan.ribeirosap@gmail.com">Rayan.ribeirosap@gmail.com</a></li>
+        <li>• LinkedIn: <a class="underline" target="_blank" rel="noopener" href="https://www.linkedin.com/in/rayanribeiro/">linkedin.com/in/rayanribeiro</a></li>
+        <!-- WhatsApp REMOVIDO -->
+      </ul>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <!-- Botão de CV REMOVIDO -->
+        <a class="btn btn-primary" href="#solucoes">Ver portfólio</a>
       </div>
-    </section>
+    </div>
+
+    <!-- FORM em produção via FormSubmit -->
+    <form class="glass card"
+          action="https://formsubmit.co/Rayan.ribeirosap@gmail.com"
+          method="POST">
+      <!-- config -->
+      <input type="hidden" name="_subject" value="Novo contato do site — rayan-site">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_template" value="table">
+      <input type="text" name="_honey" style="display:none"> <!-- honeypot anti-spam -->
+      <input type="hidden" name="_next" value="https://SamanthaPatricio.github.io/rayan-site/?sucesso=1#contato">
+
+      <label class="muted" style="display:block;margin-bottom:10px">Nome
+        <input name="nome" required placeholder="Seu nome"
+               style="margin-top:6px;width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.05);color:var(--text);outline:none">
+      </label>
+
+      <label class="muted" style="display:block;margin-bottom:10px">Empresa
+        <input name="empresa" placeholder="Ex.: BRF"
+               style="margin-top:6px;width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.05);color:var(--text);outline:none">
+      </label>
+
+      <label class="muted" style="display:block;margin-bottom:10px">Email
+        <input type="email" name="email" required placeholder="voce@empresa.com"
+               style="margin-top:6px;width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.05);color:var(--text);outline:none">
+      </label>
+
+      <label class="muted" style="display:block;margin-bottom:12px">Mensagem
+        <textarea name="mensagem" required placeholder="Contexto, prazos e objetivos"
+                  style="margin-top:6px;width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.05);color:var(--text);min-height:110px;outline:none"></textarea>
+      </label>
+
+      <button class="btn btn-accent" type="submit">Enviar</button>
+      <p class="muted" style="font-size:12px;margin-top:8px">
+        Este formulário é enviado via FormSubmit. Na primeira mensagem, confirme seu e-mail para ativar.
+      </p>
+    </form>
+  </div>
+</section>
+
+<!-- Mensagem de sucesso simples -->
+<script>
+  if (new URLSearchParams(location.search).get('sucesso') === '1') {
+    alert('Obrigado! Recebemos sua mensagem.');
+  }
+</script>
 
     <!-- ====== RODAPÉ ====== -->
     <footer style="padding:30px 0;border-top:1px solid var(--line)">
